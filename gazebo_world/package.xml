@@ -51,6 +51,8 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <!-- Below Added by Adam. NonDefault Package Elements -->
+  <build_depend>gazebo_ros</build_depend>   <!-- Based upon inclusion in gazebosim.org/tutorials?tut=ros_overview -->
+
   <exec_depend>gazebo_plugins</exec_depend> <!-- ADAM ASSUMED ONLY NEEDED FOR RUN TIME -->
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>gazebo_ros_control</exec_depend>
