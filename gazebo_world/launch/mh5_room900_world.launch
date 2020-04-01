@@ -1,0 +1,40 @@
+<launch>
+
+  <!-- Script based upon https://github.com/ros-simulation/gazebo_ros_demos/blob/kinetic-devel/rrbot_gazebo/launch/rrbot_world.launch-->
+  <!-- Adam Buynak.9  April 1 2020 -->
+  <!-- Robot mh5 written in explicitly. Will need to modify all (x3) critical instances it appears in script to change. No other scripts need changed -->
+
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find gazebo_world)/worlds/room900.world"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <include file="$(find motoman_mh5_support)/launch/load_mh5.launch" />
+
+  <!-- Feb 2020. ACB. Above 'include' is a temporary fix to directly include file the robot description -->
+  <!-- param name="robot_description" command="$(find xacro)/xacro -'-inorder '$(find motoman_mh5_support)/urdf/mh5.xacro'" / > Remove Extra ' -->
+
+
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0"/>
+
+
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+	args="-urdf -model mh5 -param robot_description -x $(arg x) -y $(arg y) -z $(arg z)" />
+
+</launch>
