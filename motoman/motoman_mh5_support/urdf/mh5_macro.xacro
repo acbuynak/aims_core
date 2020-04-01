@@ -1,7 +1,10 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 	<xacro:macro name="motoman_mh5" params="prefix">
+
 		<!-- link list -->
+		<link name="world"/>  		<!-- ADDED NEW: World Link-->
+
 		<link name="${prefix}base_link">
 			<visual>
 			        <origin rpy="0 0 3.14159"/>
@@ -11,6 +14,7 @@
 				<material name="blue">
 					<color rgba="0 0 1 1"/>
 				</material>
+
 			</visual>
 			<collision>
 			        <origin rpy="0 0 3.14159"/>
@@ -21,7 +25,16 @@
 					<color rgba="0 1 1 1"/>
 				</material>
 			</collision>
+			<inertial>
+	      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+	      <mass value="1"/>
+	      <inertia
+	        ixx="0.0077" ixy="0.0" ixz="0.0"
+	        iyy="0.0066" iyz="0.0"
+	        izz="0.0077"/>
+	    </inertial>
 		</link>
+
 		<link name="${prefix}link_s">
 			<visual>
 				<geometry>
@@ -37,6 +50,14 @@
 				</geometry>
 				<material name="yellow"/>
 			</collision>
+			<inertial>
+	      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+	      <mass value="1"/>
+	      <inertia
+	        ixx="0.0052" ixy="0.0" ixz="0.0"
+	        iyy="0.0052" iyz="0.0"
+	        izz="0.0066"/>
+	    </inertial>
 		</link>
 		<link name="${prefix}link_l">
 			<visual>
@@ -53,7 +74,16 @@
 				</geometry>
 				<material name="yellow"/>
 			</collision>
+			<inertial>
+	      <origin xyz="0 0 0.13" rpy="0 0 0"/>
+	      <mass value="1"/>
+	      <inertia
+	        ixx="0.02055" ixy="0.0" ixz="0.0"
+	        iyy="0.01875" iyz="0.0"
+	        izz="0.00555"/>
+	    </inertial>
 		</link>
+
 		<link name="${prefix}link_u">
 			<visual>
 				<!-- <origin rpy="1.57 -3.1415 0" xyz="0 0 0"/> -->
@@ -69,7 +99,16 @@
 				</geometry>
 				<material name="yellow"/>
 			</collision>
+			<inertial>
+	      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+	      <mass value="1"/>
+	      <inertia
+	        ixx="0.00328" ixy="0.0" ixz="0.0"
+	        iyy="0.00354" iyz="0.0"
+	        izz="0.00401"/>
+	    </inertial>
 		</link>
+
 		<link name="${prefix}link_r">
 			<visual>
 				<!-- <origin rpy="0 0 3.1416" xyz="0 0 0"/> -->
@@ -85,7 +124,16 @@
 				</geometry>
 				<material name="yellow"/>
 			</collision>
+			<inertial>
+	      <origin xyz="0.1 0 0" rpy="0 0 0"/>
+	      <mass value="1"/>
+	      <inertia
+	        ixx="0.00184" ixy="0.0" ixz="0.0"
+	        iyy="0.00708" iyz="0.0"
+	        izz="0.00691"/>
+	    </inertial>
 		</link>
+
 		<link name="${prefix}link_b">
 			<visual>
 				<!-- <origin rpy="-1.57 0 3.1416" xyz="0 0 0"/> -->
@@ -101,7 +149,16 @@
 				</geometry>
 				<material name="yellow"/>
 			</collision>
+			<inertial>
+	      <origin xyz="0.05 0 0" rpy="0 0 0"/>
+	      <mass value="1"/>
+	      <inertia
+	        ixx="0.000708" ixy="0.0" ixz="0.0"
+	        iyy="0.001308" iyz="0.0"
+	        izz="0.004167"/>
+	    </inertial>
 		</link>
+
 		<link name="${prefix}link_t">
 			<visual>
 				<geometry>
@@ -115,9 +172,23 @@
 				</geometry>
 				<material name="yellow"/>
 			</collision>
+			<inertial>
+	      <origin xyz="0 0 0" rpy="0 0 0"/>
+	      <mass value="1"/>
+	      <inertia
+	        ixx="0.00041667" ixy="0.0" ixz="0.0"
+	        iyy="0.00028333" iyz="0.0"
+	        izz="0.00028333"/>
+	    </inertial>
 		</link>
 		<!-- end of link list -->
+
 		<!-- joint list -->
+		<joint name="fixed" type="fixed">  <!-- ADDED BY ADAM:: Start -->
+			<parent link="world"/>
+			<child link="${prefix}base_link"/>
+		</joint>               		         <!-- ADDED BY ADAM:: END -->
+
 		<joint name="${prefix}joint_s" type="revolute">
 			<parent link="${prefix}base_link"/>
 			<child link="${prefix}link_s"/>
@@ -141,7 +212,8 @@
            below were measured from an MH5F.  They ensure that link_r
            won't hit link_l even when joint_r is at 45 degrees.  The
            old limits were converted directly from the MH5 data sheet,
-           which was clearly way off. -->
+           which was clearly way off.
+				  .. Noted by Adam Buynak February 2020 -->
 			<limit lower="-1.0122" upper="3.2218" effort="100" velocity="2.96" />
 		</joint>
 		<joint name="${prefix}joint_r" type="revolute">
@@ -167,5 +239,5 @@
 		</joint>
 		<!-- end of joint list -->
 	</xacro:macro>
-</robot>
 
+</robot>

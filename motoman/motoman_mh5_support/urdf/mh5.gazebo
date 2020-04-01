@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ALTERNATIVE METHOD OF PASSING 'prefix' VARIABLE -->
+  <!-- <xacro:macro name="myrobot_gazebo" params="prefix"> -->
+
+
+  <!-- declare arg to be passed in -->
+  <xacro:arg name="pfx" default=""/>
+
+  <!-- GAZEBO COLORING -->
+  <gazebo reference="$(arg pfx)base_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+  <gazebo reference="$(arg pfx)link_s">
+    <material>Gazebo/White</material>
+  </gazebo>
+  <gazebo reference="$(arg pfx)link_l">
+    <material>Gazebo/White</material>
+  </gazebo>
+  <gazebo reference="$(arg pfx)link_u">
+    <material>Gazebo/White</material>
+  </gazebo>
+  <gazebo reference="$(arg pfx)link_r">
+    <material>Gazebo/White</material>
+  </gazebo>
+  <gazebo reference="$(arg pfx)link_b">
+    <material>Gazebo/White</material>
+  </gazebo>
+  <gazebo reference="$(arg pfx)link_t">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+
+  <!-- transmission elements are required by the controller manager (here: for simulation in gazebo)
+  Used to Link actuators to joints  -->
+  <!-- Reference https://wiki.ros.org/urdf/XML/Transmission -->
+
+  <xacro:macro name="transmission_block" params="joint_name">
+    <transmission name="${joint_name}_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint_name}">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>        <!-- hardware_interface/PositionJointInterface -->
+      </joint>
+      <actuator name="${joint_name}_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+
+  <!-- GENERATE JOINT TRANSMISSION ELEMENTS -->
+  <xacro:transmission_block joint_name="$(arg pfx)joint_s" />
+  <xacro:transmission_block joint_name="$(arg pfx)joint_l" />
+  <xacro:transmission_block joint_name="$(arg pfx)joint_u" />
+  <xacro:transmission_block joint_name="$(arg pfx)joint_r" />
+  <xacro:transmission_block joint_name="$(arg pfx)joint_b" />
+  <xacro:transmission_block joint_name="$(arg pfx)joint_t" />
+  <!-- xacro:transmission_block joint_name="${prefix}joint_t" /-->
+
+
+
+  <!-- Gazebo plugin for ROS Control ......................................... -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>bot_mh5</robotNamespace>
+    </plugin>
+  </gazebo>
+
+</robot>
