@@ -3,7 +3,7 @@
 	<xacro:macro name="motoman_mh5" params="prefix">
 
 		<!-- link list -->
-		<link name="world"/>  		<!-- ADDED NEW: World Link-->
+		<link name="world"/>  		<!-- ADDED NEW: World Link. Required for robot to be rigidly attached to world.-->
 
 		<link name="${prefix}base_link">
 			<visual>
