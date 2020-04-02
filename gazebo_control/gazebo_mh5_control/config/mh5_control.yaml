@@ -1,0 +1,36 @@
+bot_mh5:
+
+  # Script based upon https://github.com/ros-simulation/gazebo_ros_demos/blob/kinetic-devel/rrbot_control/config/rrbot_control.yaml
+  # ACBuynak  February 2020
+  # Robot mh5 written in explicitly. Will need to modify all (x4) critical instances it appears in script to change. No other scripts need changed
+
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Position Controllers ---------------------------------------
+  joint_s_position_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_s
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_l_position_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_l
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_u_position_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_u
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_r_position_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_r
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_b_position_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_b
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_t_position_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_t
+    pid: {p: 100.0, i: 0.01, d: 10.0}

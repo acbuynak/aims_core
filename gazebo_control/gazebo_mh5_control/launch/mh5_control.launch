@@ -1,0 +1,33 @@
+<launch>
+
+  <!-- Script based upon https://github.com/ros-simulation/gazebo_ros_demos/blob/kinetic-devel/rrbot_control/launch/rrbot_control.launch-->
+  <!-- ACBuynak  02 April 2020 -->
+  <!-- Robot mh5 written in explicitly. Will need to modify all (x4) critical instances it appears in script to change. No other scripts need changed -->
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find gazebo_mh5_control)/config/mh5_control.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/bot_mh5"
+    args="
+    joint_s_position_controller
+    joint_l_position_controller
+    joint_u_position_controller
+    joint_r_position_controller
+    joint_b_position_controller
+    joint_t_position_controller
+    joint_state_controller"/>
+
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>     <!-- NEW CODE BY ACB-->
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/bot_mh5/joint_states" />
+    <param name="publish_frequency" type="double" value="50.0" />               <!-- NEW CODE BY ACB-->
+  </node>
+
+
+</launch>
