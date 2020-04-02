@@ -36,6 +36,9 @@
   Used to Link actuators to joints  -->
   <!-- Reference https://wiki.ros.org/urdf/XML/Transmission -->
 
+  <!-- EfforJointInterface is the correct type of interface for Gazebo Simulation per following ROSwiki -->
+  <!-- https://answers.ros.org/question/285977/could-not-find-resource-in-hardware_interfaceeffortjointinterface/ -->
+
   <xacro:macro name="transmission_block" params="joint_name">
     <transmission name="${joint_name}_trans">
       <type>transmission_interface/SimpleTransmission</type>
