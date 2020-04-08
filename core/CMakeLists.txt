@@ -107,7 +107,7 @@ find_package(catkin REQUIRED
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS {THIS_PACKAGE_INCLUDE_DIRS}
+#  INCLUDE_DIRS {THIS_PACKAGE_INCLUDE_DIRS}
 #  LIBRARIES core
   CATKIN_DEPENDS moveit_core moveit_visual_tools moveit_ros_planning_interface
 #  DEPENDS system_lib

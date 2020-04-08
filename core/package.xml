@@ -50,23 +50,23 @@
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
 
-  <buildtool_depend>moveit_core</buildtool_depend>
-  <buildtool_depend>moveit_ros_planning</buildtool_depend>
-  <buildtool_depend>moveit_ros_planning_interface</buildtool_depend>
-  <buildtool_depend>moveit_ros_perception</buildtool_depend>
-  <buildtool_depend>moveit_visual_tools</buildtool_depend>
-  <buildtool_depend>pcl_ros</buildtool_depend>
-  <buildtool_depend>pcl_conversions</buildtool_depend>
+  <build_depend>moveit_core</build_depend>
+  <build_depend>moveit_ros_planning</build_depend>
+  <build_depend>moveit_ros_planning_interface</build_depend>
+  <build_depend>moveit_ros_perception</build_depend>
+  <build_depend>moveit_visual_tools</build_depend>
+  <build_depend>pcl_ros</build_depend>
+  <build_depend>pcl_conversions</build_depend>
 
-  <run_depend>moveit_mh5_config</run_depend>
-  <run_depend>moveit_core</run_depend>
-  <run_depend>moveit_commander</run_depend>
-  <run_depend>moveit_fake_controller_manager</run_depend>
-  <run_depend>moveit_ros_planning_interface</run_depend>
-  <run_depend>moveit_ros_perception</run_depend>
-  <run_depend>moveit_visual_tools</run_depend>
-  <run_depend>pcl_ros</run_depend>
-  <run_depend>pcl_conversions</run_depend>
+  <exec_depend>moveit_mh5_config</exec_depend>
+  <exec_depend>moveit_core</exec_depend>
+  <exec_depend>moveit_commander</exec_depend>
+  <exec_depend>moveit_fake_controller_manager</exec_depend>
+  <exec_depend>moveit_ros_planning_interface</exec_depend>
+  <exec_depend>moveit_ros_perception</exec_depend>
+  <exec_depend>moveit_visual_tools</exec_depend>
+  <exec_depend>pcl_ros</exec_depend>
+  <exec_depend>pcl_conversions</exec_depend>
 
   <test_depend>moveit_resources</test_depend>
 
