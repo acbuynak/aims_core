@@ -213,7 +213,7 @@
            won't hit link_l even when joint_r is at 45 degrees.  The
            old limits were converted directly from the MH5 data sheet,
            which was clearly way off.
-				  .. Noted by Adam Buynak February 2020 -->
+				  .. Noted by ACBUYNAK February 2020 -->
 			<limit lower="-1.0122" upper="3.2218" effort="100" velocity="2.96" />
 		</joint>
 		<joint name="${prefix}joint_r" type="revolute">
