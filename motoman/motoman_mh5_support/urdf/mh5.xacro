@@ -4,7 +4,7 @@
 	<xacro:include filename="$(find motoman_mh5_support)/urdf/mh5_macro.xacro" />
 	<xacro:motoman_mh5 prefix=""/>
 
-	<!-- .......... NEWLY ADDED BY ADAM .............. -->
+	<!-- .......... GAZEBO SUPPORT .............. -->
 	<xacro:include filename="$(find motoman_mh5_support)/urdf/mh5.gazebo">
 		<arg name="prefix" value="${prefix}" />
 	</xacro:include>
