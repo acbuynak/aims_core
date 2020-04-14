@@ -1,0 +1,4 @@
+
+<launch>
+	<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find schunk_pgn64_support)/urdf/mh5_with_pgn64.xacro'" />
+</launch>

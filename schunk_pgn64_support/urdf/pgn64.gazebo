@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ALTERNATIVE METHOD OF PASSING 'prefix' VARIABLE -->
+  <!-- <xacro:macro name="myrobot_gazebo" params="prefix"> -->
+
+
+  <!-- declare arg to be passed in -->
+  <xacro:arg name="pfx" default=""/>
+
+  <!-- GAZEBO COLORING -->
+  <gazebo reference="$(arg pfx)tool0">
+    <material>Gazebo/Gray</material>
+  </gazebo>
+
+
+  <!-- transmission elements are required by the controller manager (here: for simulation in gazebo)
+  Used to Link actuators to joints  -->
+  <!-- Reference https://wiki.ros.org/urdf/XML/Transmission -->
+
+
+  <!-- GENERATE JOINT TRANSMISSION ELEMENTS -->
+  <!-- xacro:transmission_block joint_name="${prefix}joint_t" /-->
+
+
+</robot>

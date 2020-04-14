@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+	<xacro:macro name="schunk_pgn64" params="prefix">
+
+		<!-- Tool0 = Tool Mounting Point -->
+		<!-- If only link in tool, will include all geometry, inertia, etc data -->
+		<link name="${prefix}tool0">
+			<visual>
+			        <origin xyz="0 0 0" rpy="0 0 0"/> <!-- ACB 2020-04-13 Confirm length of t_link offset to current value -->
+				<geometry>
+					<mesh filename="package://schunk_pgn64_support/meshes/pgn64/visual/PGN64_SOLID.stl"/>
+				</geometry>
+				<material name="green">
+					<color rgba="0 1 0 1"/>
+				</material>
+
+			</visual>
+
+			<collision>
+			        <origin rpy="0 0 0"/> <!-- ACB 2020-04-13 Confirm length of t_link offset to current value -->
+				<geometry>
+					<mesh filename="package://schunk_pgn64_support/meshes/pgn64/collision/PGN64_SOLID.stl"/>
+				</geometry>
+				<material name="green">
+					<color rgba="0 1 0 1"/>
+				</material>
+			</collision>
+
+			<inertial>
+	      <origin xyz="0 0 0" rpy="0 0 0"/>
+	      <mass value="1"/>
+				<inertia
+					ixx="0.00041667" ixy="0.0" ixz="0.0"
+					iyy="0.00028333" iyz="0.0"
+					izz="0.00028333"/>
+	    </inertial>
+		</link>
+
+		<!-- Begin Tool Detail: JOINT & LINK list -->
+			<!-- ADD ADDITIONAL JOINTS & LINKS HERE IF TOOL IS MORE COMPLEX -->
+			<!-- Also, ADD transmission elements to pgn64.gazebo file for new joints/links -->
+		<!-- End Tool Detail: JOINT & LINK list -->
+
+		<!-- TCP FRAME (Tool Center Point) -->
+		<joint name="${prefix}tcp_joint" type="fixed">
+			<origin xyz="0.134112 0 0" rpy="0 0 0"/>
+			<parent link="${prefix}tool0"/>
+			<child link="${prefix}tcp"/>
+		</joint>
+		<link name="${prefix}tcp"/>
+
+	</xacro:macro>
+
+</robot>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot name="motoman_mh5_with_pgn64" xmlns:xacro="http://wiki.ros.org/xacro">
+
+	<!-- Include Macros for Motoman MH5 (forked version) and the gripper eef model -->
+  <xacro:include filename="$(find motoman_mh5_support)/urdf/mh5_macro.xacro"/>
+  <xacro:include filename="$(find schunk_pgn64_support)/urdf/pgn64_macro.xacro" />
+
+  <!-- CREATE NEW MACRO: Combine robot + eef macros for future modularity-->
+  <xacro:macro name="motoman_mh5_with_pgn64" params="prefix">
+
+    <!-- Instantiate MH5 robot and PGN64 eef model -->
+    <xacro:motoman_mh5 	prefix="${prefix}robot_" />
+    <xacro:schunk_pgn64	prefix="${prefix}eef_" />
+
+    <!-- Attach eef to MH5 model -->
+    <!-- Note: this assumes that the 'schunk_pgn64' macro defines a 'tool0'
+         link which is the start of it's kinematic chain (if any) -->
+    <joint name="${prefix}robot_flange-${prefix}eef_tool0" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="${prefix}robot_link_t" />
+      <child link="${prefix}eef_tool0" />
+    </joint>
+
+
+    <!-- .......... GAZEBO SUPPORT .............. -->
+  	<xacro:include filename="$(find motoman_mh5_support)/urdf/mh5.gazebo">
+  		<arg name="prefix" value="${prefix}robot_" />
+  	</xacro:include>
+
+  	<xacro:include filename="$(find schunk_pgn64_support)/urdf/pgn64.gazebo">
+  		<arg name="prefix" value="${prefix}eef_" />
+  	</xacro:include>
+
+
+
+  </xacro:macro>
+
+</robot>
+
+<!-- NOTE: eef    =  "End Effector" or Added on Tool to robot flange
+          flange  = standard name for robot attachment point.
+-->
