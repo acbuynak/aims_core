@@ -6,6 +6,9 @@ An developmental application of ROS-Industrial for Yaskawa Motoman robots.
 
 AIMS Lab. Gazebo Simulation of Motoman Robots using ROS Industrial. Melodic + Dashing.
 
+This package is forked from the original motoman package kinetic devel, preserving only packages of interest. The motoman_mh5_support package's urdf/xacro files were modified to allow Gazebo-9 simulation. Additionally, modifications were implemented to allow interaction with the FS100 controller I/O's.
+
+This metapackage contains packages developed by the ROS-I project.
 
 ### Usage
 This package is designed as the complete contents of the <workspace>/src folder of a ROS1 workspace built using [catkin tools](https://catkin-tools.readthedocs.io/en/latest/#).
