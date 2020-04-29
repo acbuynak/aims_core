@@ -19,3 +19,9 @@ This package is designed as the complete contents of the <workspace>/src folder 
     catkin init
     cd src
 
+### Features / Capability
+- Base MH5 ROS control
+- Moveit integration w/ MH5 Robot
+- IO pin control of FS100 controller. (other controllers untested to date)
+- Rviz visualization (via moveit plugin) of MH5 robot
+- Gazebo Simulation of MH5
