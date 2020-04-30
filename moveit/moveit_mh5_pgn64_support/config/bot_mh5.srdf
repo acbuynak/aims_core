@@ -29,6 +29,14 @@
         <joint name="robot_joint_t" value="0" />
         <joint name="robot_joint_u" value="-0.69" />
     </group_state>
+    <group_state name="default" group="mh5_arm">
+        <joint name="robot_joint_b" value="0" />
+        <joint name="robot_joint_l" value="0" />
+        <joint name="robot_joint_r" value="0" />
+        <joint name="robot_joint_s" value="0" />
+        <joint name="robot_joint_t" value="0" />
+        <joint name="robot_joint_u" value="0" />
+    </group_state>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="FixedBase" type="fixed" parent_frame="world" child_link="robot_base_link" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
