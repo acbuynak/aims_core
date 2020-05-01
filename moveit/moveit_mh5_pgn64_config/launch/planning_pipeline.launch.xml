@@ -5,6 +5,6 @@
 
   <arg name="pipeline" default="ompl" />
 
-  <include file="$(find moveit_mh5_pgn64_support)/launch/$(arg pipeline)_planning_pipeline.launch.xml" />
+  <include file="$(find moveit_mh5_pgn64_config)/launch/$(arg pipeline)_planning_pipeline.launch.xml" />
 
 </launch>

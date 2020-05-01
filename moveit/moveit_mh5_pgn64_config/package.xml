@@ -1,6 +1,6 @@
 <package>
 
-  <name>moveit_mh5_pgn64_support</name>
+  <name>moveit_mh5_pgn64_config</name>
   <version>0.3.0</version>
   <description>
      An automatically generated package with all the configuration and launch files for using the bot_mh5 with the MoveIt! Motion Planning Framework
