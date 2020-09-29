@@ -7,3 +7,6 @@ controller_list:
       - joint_r
       - joint_b
       - joint_t
+initial:  # Define initial robot poses.
+  - group: mh5_arm
+    pose: home
