@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.1.3)
-project(moveit_mh5_config)
+cmake_minimum_required(VERSION 2.8.3)
+project(motoman_ma2010_moveit_config)
 
 find_package(catkin REQUIRED)
 
